@@ -107,7 +107,7 @@ police = Obstacle("chevrolet.png")
 voiture_obstacle = Obstacle("car.png")
 
 
-piece = Obstacle("piece.png")
+
 
 pas_deplacement = 22
 y_bg = 0
@@ -138,9 +138,7 @@ while True:
     voiture_obstacle.affichage()
     voiture_obstacle.bouge()
     voiture_obstacle.collision()
-    piece.affichage()
-    piece.bouge()
-    piece.collision()
+    
     
     
     
