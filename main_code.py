@@ -56,13 +56,13 @@ class Obstacle():
     def __init__(self,image):
         self.x = randint(0,900)
         self.y = -100
-        self.police = pygame.image.load(image).convert_alpha()
-        self.position_police = self.police.get_rect()
+        self.obstacle = pygame.image.load(image).convert_alpha()
+        self.position_obstacle = self.obstacle.get_rect()
         self.speed = 20
         
     def affichage(self):
-        self.position_police.topleft = (self.x, self.y)
-        fenetre.blit(self.police, self.position_police)
+        self.position_obstacle.topleft = (self.x, self.y)
+        fenetre.blit(self.obstacle, self.position_obstacle)
         
         
         
@@ -82,19 +82,32 @@ class Obstacle():
     def collision(self):
         x = position_voiture[0]
         y = position_voiture[1]
+        
+        
+        if voiture_obstacle.x - 30  <= police.x <= voiture_obstacle.x +30 :
+            police.x += 30
+            
+        
+        
         if self.x-30 <= x <= self.x+30  and (self.y-30)<=y<=(self.y+30):
             crash()
             time.sleep(2)
             pygame.display.quit()
             sys.exit()
             
+            
+    
+            
         
+            
 
 
 
 police = Obstacle("chevrolet.png")
-voiture_obstacle = Obstacle("car.png") 
+voiture_obstacle = Obstacle("car.png")
 
+
+piece = Obstacle("piece.png")
 
 pas_deplacement = 22
 y_bg = 0
@@ -125,7 +138,9 @@ while True:
     voiture_obstacle.affichage()
     voiture_obstacle.bouge()
     voiture_obstacle.collision()
-    
+    piece.affichage()
+    piece.bouge()
+    piece.collision()
     
     
     
