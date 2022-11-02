@@ -66,13 +66,13 @@ class Obstacle():
         self.position_obstacle.topleft = (self.x, self.y)
         fenetre.blit(self.obstacle, self.position_obstacle)
         
-    def bouge(self,xd,xe):
+    def bouge(self,xd,xf):
         self.y += self.speed
         if self.y > 900:
             self.speed = randint(25,40)
             back = randint(1200,2200)
             self.y -= back
-            self.x = randint(xd,xe)
+            self.x = randint(xd,xf)
             
             
     def collision(self):
