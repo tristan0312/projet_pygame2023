@@ -57,7 +57,7 @@ class Obstacle():
         self.y = 0
         self.obstacle = pygame.image.load(image).convert_alpha()
         self.position_obstacle = self.obstacle.get_rect()
-        self.speed = 15
+        self.speed = randint(15,30)
         
         
     
@@ -68,9 +68,8 @@ class Obstacle():
         
     def bouge(self,xd,xe):
         self.y += self.speed
-        self.speed = randint(15,35)
-            
         if self.y > 900:
+            self.speed = randint(25,40)
             back = randint(1200,2200)
             self.y -= back
             self.x = randint(xd,xe)
