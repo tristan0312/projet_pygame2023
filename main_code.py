@@ -33,7 +33,21 @@ position_voiture.topleft = ( 500,800)
 def crash():
     police = pygame.font.SysFont('monospace',100)
     image_texte = police.render("game over", 1, (255,0,0))
-    fenetre.blit(image_texte,(200,300))
+    fenetre.blit(image_texte,(250,300))
+    pygame.display.flip()
+    
+    
+    
+    
+def temps():
+    timer = pygame.time.get_ticks()
+    temps = timer // 1000
+    police = pygame.font.SysFont('monospace',45)
+    image_texte = police.render(str(temps), 1, (0,0,0))
+    fenetre.blit(image_texte,(920,0))
+    police1 = pygame.font.SysFont('monospace',45)
+    image_texte1 = police1.render("points:", 1, (0,0,0))
+    fenetre.blit(image_texte1,(730,0))
     pygame.display.flip()
 
 
@@ -52,11 +66,12 @@ class Obstacle():
         self.position_obstacle.topleft = (self.x, self.y)
         fenetre.blit(self.obstacle, self.position_obstacle)
         
-    def bouge(self,xd,xe,back):
+    def bouge(self,xd,xe):
         self.y += self.speed
         self.speed = randint(15,35)
             
         if self.y > 900:
+            back = randint(1200,2200)
             self.y -= back
             self.x = randint(xd,xe)
             
@@ -131,7 +146,7 @@ while True:
     
     
     y_bg +=18
-    fenetre.fill([10,186,181])
+    
     
    
     
@@ -160,20 +175,20 @@ while True:
     fenetre.blit(voiture, position_voiture)
 
     chevrolet.affichage()
-    chevrolet.bouge(170,280,1200)
+    chevrolet.bouge(170,280)
     chevrolet.collision()
     
     voiture_obstacle.affichage()
-    voiture_obstacle.bouge(335,470,1400)
+    voiture_obstacle.bouge(335,510)
     voiture_obstacle.collision()
     
     black.affichage()
-    black.bouge(530,650,1600)
+    black.bouge(500,650)
     black.collision()
     
  
     yellow.affichage()
-    yellow.bouge(700,850,1800)
+    yellow.bouge(700,850)
     yellow.collision()
     
     
@@ -201,4 +216,5 @@ while True:
     
     
     clock.tick(60)
+    temps()
     pygame.display.flip()
