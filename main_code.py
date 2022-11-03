@@ -39,15 +39,15 @@ def crash():
     
     
     
-def temps():
+def score(x1,x2,taille,y):
     timer = pygame.time.get_ticks()
     temps = timer // 1000
-    police = pygame.font.SysFont('monospace',45)
-    image_texte = police.render(str(temps), 1, (0,0,0))
-    fenetre.blit(image_texte,(920,0))
-    police1 = pygame.font.SysFont('monospace',45)
-    image_texte1 = police1.render("points:", 1, (0,0,0))
-    fenetre.blit(image_texte1,(730,0))
+    police = pygame.font.SysFont('monospace',taille)
+    image_texte = police.render(str(temps), 1, (255,0,0))
+    fenetre.blit(image_texte,(x1,y))
+    police1 = pygame.font.SysFont('monospace',taille)
+    image_texte1 = police1.render("points:", 1, (255,0,0))
+    fenetre.blit(image_texte1,(x2,y))
     pygame.display.flip()
 
 
@@ -83,6 +83,7 @@ class Obstacle():
     
         if self.x-30 <= x <= self.x+30  and (self.y-30)<=y<=(self.y+30):
             crash()
+            score(650,360,70,450)
             time.sleep(2)
             pygame.display.quit()
             sys.exit()
@@ -215,5 +216,5 @@ while True:
     
     
     clock.tick(60)
-    temps()
+    score(920,730,45,0)
     pygame.display.flip()
