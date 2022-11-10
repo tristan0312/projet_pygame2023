@@ -218,3 +218,15 @@ while True:
     clock.tick(60)
     score(920,730,45,0)
     pygame.display.flip()
+_______________________________________________________________________________________________________________
+
+ elif event.key == K_SPACE:
+                Pause = True
+                while Pause:
+                    for event in pygame.event.get()
+                        if event.type==KEYDOWN and event.key == K_SPACE:
+                            Pause = False
+                            #modif après édition
+                            pygame.event.clear()
+                            break
+
